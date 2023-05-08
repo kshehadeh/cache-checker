@@ -1,7 +1,6 @@
 import chalk from 'chalk'
-import {Command} from 'commander'
-import {CurlyOptions} from 'node-libcurl/dist/curly.js'
-import {checkUrlCache, checkUrlCacheInterval} from './lib/actions.js'
+import { Command } from 'commander'
+import { checkUrlCache, checkUrlCacheInterval } from './lib/actions.js'
 
 const program = new Command()
 
@@ -28,7 +27,7 @@ const opts = program.opts()
 
 const cookie = opts.cookie ? opts.cookie.join('; ') : undefined
 
-const curlOptions: CurlyOptions = {}
+const curlOptions = {}
 if (cookie) {
   curlOptions.cookie = cookie
 }
@@ -36,7 +35,7 @@ if (cookie) {
 console.log(chalk.red(`${chalk.bold('Target url')}: ${args[0]}`))
 
 if (opts.interval) {
-  await checkUrlCacheInterval(args[0], curlOptions, opts.interval, opts.maxTime)
+  checkUrlCacheInterval(args[0], curlOptions, opts.interval, opts.maxTime)
 } else {
-  await checkUrlCache(args[0], curlOptions)
+  checkUrlCache(args[0], curlOptions)
 }

@@ -1,6 +1,6 @@
 import chalk from 'chalk'
 
-export function getRichTextCacheStatus(cacheStatus: string) {
+export function getRichTextCacheStatus(cacheStatus) {
   if (cacheStatus.includes('HIT')) {
     return chalk.green(cacheStatus)
   }
@@ -16,7 +16,7 @@ export function getRichTextCacheStatus(cacheStatus: string) {
   return chalk.white(cacheStatus)
 }
 
-export function getRichTextStatusCode(code: number) {
+export function getRichTextStatusCode(code) {
   if (code >= 200 && code < 300) {
     return chalk.green(code.toString())
   }
@@ -27,5 +27,5 @@ export function getRichTextStatusCode(code: number) {
     return chalk.red(code.toString())
   }
 
-  return chalk.white.bgRedBright(code.toString())
+  return chalk.bgRedBright(code.toString())
 }
